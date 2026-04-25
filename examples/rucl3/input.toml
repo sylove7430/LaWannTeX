@@ -1,0 +1,23 @@
+# RuCl3 example input.
+#
+# Run examples:
+#   julia main.jl --input examples/rucl3/input.toml
+#
+
+# ----------------------------------------------------------------------
+# report:
+#   hr.dat를 읽어 hopping table과 H(k) LaTeX 보고서를 생성한다.
+# ----------------------------------------------------------------------
+[files]
+hr = "wannier90_hr.dat"
+win = "wannier90.win"
+out = "reports/rucl3_hamiltonian.tex"
+
+[render]
+atol = 1.0e-6
+include_second_quant = true
+
+[selection]
+mode = "orbital"
+wannier_indices = [1, 4]
+max_nn = 1

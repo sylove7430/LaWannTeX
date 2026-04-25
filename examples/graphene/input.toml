@@ -1,0 +1,42 @@
+# Graphene integrated example input.
+#
+# Run examples:
+#   julia main.jl --input examples/graphene/input.toml
+#
+
+# ----------------------------------------------------------------------
+# Shared structure:
+#   여러 모듈이 공통으로 참조할 수 있는 graphene 격자 정보.
+# ----------------------------------------------------------------------
+# Shared lattice helper for modules that can read a plain [structure] table.
+[structure]
+lattice = [
+  [2.46, 0.0, 0.0],
+  [1.23, 2.130422493, 0.0],
+  [0.0, 0.0, 20.0],
+]
+
+[[orbitals]]
+name = "C"
+position_frac = [0.0, 0.0, 0.0]
+orbitals = ["pz"]
+spins = ["none"]
+
+[[orbitals]]
+name = "C"
+position_frac = [0.3333333333, 0.3333333333, 0.0]
+orbitals = ["pz"]
+spins = ["none"]
+
+# ----------------------------------------------------------------------
+# report:
+#   hr.dat를 읽어 hopping table과 H(k) LaTeX 보고서를 생성한다.
+# ----------------------------------------------------------------------
+[files]
+hr = "graphene_hr.dat"
+out = "reports/graphene_hr_hamiltonian.tex"
+
+[render]
+atol = 1.0e-6
+max_rblocks = 12
+include_second_quant = true

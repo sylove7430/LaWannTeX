@@ -1,0 +1,23 @@
+# CsV3Sb5 example input.
+#
+# Run examples:
+#   julia main.jl --input examples/csv3sb5/input.toml
+#
+
+# ----------------------------------------------------------------------
+# report:
+#   hr.dat를 읽어 hopping table과 H(k) LaTeX 보고서를 생성한다.
+# ----------------------------------------------------------------------
+[files]
+hr = "wannier90_hr.dat"
+win = "wannier90.win"
+out = "reports/csv3sb5_hamiltonian.tex"
+
+[render]
+atol = 1.0e-6
+include_second_quant = true
+
+[selection]
+mode = "orbital"
+wannier_indices = [5, 10, 15]
+max_nn = 2

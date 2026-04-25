@@ -1,0 +1,6 @@
+name = "WannierLatex"
+uuid = "3da1d8f0-92f6-4baf-a7a0-5d2cd6498d8f"
+version = "0.1.0"
+
+[compat]
+julia = "1.12"

@@ -1,0 +1,16 @@
+begin unit_cell_cart
+ang
+1.0 0.0 0.0
+0.0 1.0 0.0
+0.0 0.0 1.0
+end unit_cell_cart
+
+begin atoms_frac
+Fe 0.0 0.0 0.0
+Fe 0.5 0.0 0.0
+end atoms_frac
+
+begin projections
+Fe:d
+Fe:f
+end projections
