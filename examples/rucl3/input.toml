@@ -19,5 +19,5 @@ include_second_quant = true
 
 [selection]
 mode = "orbital"
-wannier_indices = [1, 4]
+wannier_indices = [1, 2, 4, 5]
 max_nn = 1

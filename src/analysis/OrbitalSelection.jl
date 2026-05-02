@@ -4,10 +4,10 @@ using LinearAlgebra
 
 using ..Model
 using ..Model: HoppingEntry, OrbitalSpec
-using ..Table: build_legacy_entries
+# using ..Table: build_legacy_entries
 using ..WannierTypes: HrBlocks, RKey
 
-export build_legacy_entries, build_orbital_entries
+# export build_legacy_entries, build_orbital_entries
 
 function _validate_selected_indices(selection::Model.OrbitalSelection, nw::Int)
     for idx in selection.wannier_indices

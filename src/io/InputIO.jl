@@ -91,7 +91,7 @@ function _normalized_unique_indices(values::Vector{String})::Vector{Int}
     return indices
 end
 
-function _parse_selection(cfg, files_tbl, render_tbl, base_dir)::SelectionMode
+function _parse_selection(cfg, render_tbl)::SelectionMode
     selection_tbl = get(cfg, "selection", Dict{String, Any}())
     selection_tbl isa AbstractDict || error("[selection] must be a table")
     _reject_unknown_keys(selection_tbl, ALLOWED_SELECTION_KEYS, "[selection]")
@@ -153,7 +153,7 @@ function read_input(path::AbstractString)::LatexConfig
 
     atol = haskey(render_tbl, "atol") ? required_float(render_tbl, "atol") : DEFAULT_ATOL
     include_second_quant = haskey(render_tbl, "include_second_quant") ? required_bool(render_tbl, "include_second_quant") : DEFAULT_INCLUDE_SECOND_QUANT
-    selection = _parse_selection(cfg, files_tbl, render_tbl, base_dir)
+    selection = _parse_selection(cfg, render_tbl)
 
     return LatexConfig(
         input_path,

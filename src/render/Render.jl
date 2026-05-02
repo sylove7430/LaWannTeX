@@ -8,19 +8,6 @@ using ..WannierTypes: HrBlocks, RKey
 
 export build_latex, display_source_label
 
-function _fmt_complex(z::ComplexF64; digits::Int=6)::String
-    re = round(real(z); digits=digits)
-    im = round(imag(z); digits=digits)
-    tol = 10.0^(-digits)
-    if abs(im) < tol
-        return string(re)
-    elseif abs(re) < tol
-        return "$(im)i"
-    end
-    sign = im >= 0 ? "+" : "-"
-    return "$(re) $(sign) $(abs(im))i"
-end
-
 function _R_to_latex(R::RKey)::String
     parts = String[]
     labels = ("\\mathbf{a}_1", "\\mathbf{a}_2", "\\mathbf{a}_3")
@@ -327,7 +314,6 @@ function _build_table!(
     buf::IOBuffer,
     entries::Vector{HoppingEntry},
     orbital_labels::Vector{String},
-    display_label::AbstractString,
     selection::SelectionMode,
 )
     is_orbital = selection isa OrbitalSelection
@@ -429,8 +415,9 @@ function build_latex(
         println(buf, raw"  \centering")
         println(buf, raw"  \caption{Hopping parameters extracted from \texttt{" * _latex_text_escape(display_label) * raw"}.}")
         println(buf, raw"  \label{tab:hoppings}")
-        _build_table!(buf, shown_entries, orbital_labels, display_label, selection)
+        _build_table!(buf, shown_entries, orbital_labels, selection)
 
+        #=
         if render_explicit_matrix_form
             println(buf, raw"\subsection*{Explicit matrix form}")
             println(buf)
@@ -467,7 +454,8 @@ function build_latex(
             println(buf, raw"\end{align}")
             println(buf)
         end
-
+        =#
+        
         if include_second_quant
             println(buf, raw"\subsection*{Second-quantization form}")
             println(buf)
